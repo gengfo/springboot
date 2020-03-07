@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<title>聊天室-客户端</title>
+	<link href="/webjars/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+	<div class="container">
+
+		<!-- start 服务连接、断开  -->
+		<div class="row">
+			<div class="col-md-12">
+				<button id="connectServer" onclick="connectServer()">连接服务</button>
+				<button id="disConnectServer" onclick="disConnectServer()">断开服务</button>
+			</div>
+		</div>
+		<!-- end 服务连接、断开  -->
+
+		<!-- start 消息发送 -->
+		<div class="row">
+			<div class="col-md-12">
+				待发送消息内容：
+				<textarea id="todo-message" class="form-control" rows="3"></textarea>
+				<br/>
+				<button id="send-message-to-all-chatroom" type="button" class="btn btn-primary" onclick="sendMsgToChatRoom('websocket/send-message-to-chatroom-all')">发送至所有讨论组</button>
+				<button id="send-message-to-javalsj-chatroom" type="button" class="btn btn-primary" onclick="sendMsgToChatRoom('websocket/send-message-to-chatroom-javalsj')">发送至Java老司机讨论组</button>
+				<button id="send-message-to-python-chatroom" type="button" class="btn btn-primary" onclick="sendMsgToChatRoom('websocket/send-message-to-chatroom-python')">发送至Python老司机讨论组</button>
+			</div>
+		</div>
+		<!-- end 消息发送 -->
+
+		<!-- start 讨论组 -->
+		<div class="row">
+			<!-- 所有讨论组 -->
+			<div class="col-md-4">
+				所有讨论组：
+				<br />
+				<textarea id="chatroom-all" class="form-control" rows="10" th:text="${chatroom_all_message}"></textarea>
+			</div>
+			<!-- Java老司机讨论组 -->
+			<div class="col-md-4">
+				Java老司机讨论组：
+				<br />
+				<textarea id="chatroom-javalsj" class="form-control" rows="10" th:text="${chatroom_javalsj_message}"></textarea>
+			</div>
+			<!-- Python老司机讨论组 -->
+			<div class="col-md-4">
+				Python老司机讨论组：
+				<br />
+				<textarea id="chatroom-python" class="form-control" rows="10" th:text="${chatroom_python_message}"></textarea>
+			</div>
+		</div>
+		<!-- end 讨论组 -->
+
+	</div>
+</body>
+
+<!-- js脚本 -->
+<script src="/webjars/jquery/jquery.min.js"></script>
+<script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+<script src="/webjars/sockjs-client/sockjs.min.js"></script>
+<script src="/webjars/stomp-websocket/stomp.min.js"></script>
+<script src="/websocket/chatroom.js"></script>
+
+</html>
