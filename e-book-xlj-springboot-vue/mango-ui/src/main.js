@@ -5,9 +5,10 @@ import api from './http'
 import global from '@/utils/global'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
+import 'font-awesome/css/font-awesome.min.css'
 
-Vue.use(ElementUI)  // 引入Element
-Vue.use(api)  // 引入API模块
+Vue.use(ElementUI)  // 注册使用Element
+Vue.use(api)  // 注册使用API模块
 
 Vue.prototype.global = global // 挂载全局配置模块
 
